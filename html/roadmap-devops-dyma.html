@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap DevOps – Dyma</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #1e2330;
+    --accent: #00e5ff;
+    --accent2: #7c3aed;
+    --accent3: #f59e0b;
+    --accent4: #10b981;
+    --accent5: #ef4444;
+    --text: #e2e8f0;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(124,58,237,0.07) 0%, transparent 60%);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Layout */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* Phase */
+  .phase {
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.7rem;
+    border-radius: 3px;
+    min-width: 3.5rem;
+    text-align: center;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  .p1 .phase-num { background: rgba(0,229,255,0.1); color: var(--accent); border: 1px solid rgba(0,229,255,0.25); }
+  .p2 .phase-num { background: rgba(124,58,237,0.12); color: #a78bfa; border: 1px solid rgba(124,58,237,0.25); }
+  .p3 .phase-num { background: rgba(245,158,11,0.1); color: var(--accent3); border: 1px solid rgba(245,158,11,0.25); }
+  .p4 .phase-num { background: rgba(16,185,129,0.1); color: var(--accent4); border: 1px solid rgba(16,185,129,0.25); }
+  .p5 .phase-num { background: rgba(239,68,68,0.1); color: var(--accent5); border: 1px solid rgba(239,68,68,0.25); }
+  .p6 .phase-num { background: rgba(236,72,153,0.1); color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
+
+  .phase-title-group { flex: 1; }
+
+  .phase-title-group h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+
+  .phase-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    background: var(--surface2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .badge.time { color: var(--accent3); border-color: rgba(245,158,11,0.2); background: rgba(245,158,11,0.05); }
+  .badge.level { color: var(--accent4); border-color: rgba(16,185,129,0.2); background: rgba(16,185,129,0.05); }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: rgba(255,255,255,0.12); }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .p1 .dot-accent { background: var(--accent); }
+  .p2 .dot-accent { background: #a78bfa; }
+  .p3 .dot-accent { background: var(--accent3); }
+  .p4 .dot-accent { background: var(--accent4); }
+  .p5 .dot-accent { background: var(--accent5); }
+  .p6 .dot-accent { background: #f472b6; }
+
+  .card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .card ul li {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    top: 0.05em;
+  }
+
+  /* Tools row */
+  .tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tool-chip {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: var(--surface2);
+    letter-spacing: 0.05em;
+  }
+
+  /* Course box */
+  .course-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 1rem;
+  }
+
+  .course-box-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .course-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    font-size: 0.88rem;
+  }
+
+  .course-name {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .course-desc {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 300;
+  }
+
+  .dyma-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--accent);
+    text-decoration: none;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+
+  /* Milestone */
+  .milestone {
+    margin-top: 1rem;
+    border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .p1 .milestone { border-color: var(--accent); }
+  .p2 .milestone { border-color: #a78bfa; }
+  .p3 .milestone { border-color: var(--accent3); }
+  .p4 .milestone { border-color: var(--accent4); }
+  .p5 .milestone { border-color: var(--accent5); }
+  .p6 .milestone { border-color: #f472b6; }
+
+  .milestone-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .milestone ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .milestone ul li {
+    font-size: 0.86rem;
+    color: var(--text-dim);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .milestone ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent4);
+    font-size: 0.78rem;
+  }
+
+  /* Full-width card */
+  .card.full { grid-column: 1 / -1; }
+
+  /* Divider */
+  .phase-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 3.5rem 0 0;
+  }
+
+  /* Recap timeline */
+  .recap {
+    margin-top: 3.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .recap h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .timeline-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .tl-phase {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    flex-shrink: 0;
+  }
+
+  .tl-name {
+    padding: 0.7rem 1rem;
+    font-size: 0.87rem;
+    color: var(--text-dim);
+    flex: 1;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+  }
+
+  .tl-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.7rem 1rem;
+    color: var(--accent3);
+    background: rgba(245,158,11,0.04);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    border-left: 1px solid var(--border);
+  }
+
+  .tr1 .tl-phase { background: rgba(0,229,255,0.08); color: var(--accent); }
+  .tr2 .tl-phase { background: rgba(124,58,237,0.08); color: #a78bfa; }
+  .tr3 .tl-phase { background: rgba(245,158,11,0.08); color: var(--accent3); }
+  .tr4 .tl-phase { background: rgba(16,185,129,0.08); color: var(--accent4); }
+  .tr5 .tl-phase { background: rgba(239,68,68,0.08); color: var(--accent5); }
+  .tr6 .tl-phase { background: rgba(236,72,153,0.08); color: #f472b6; }
+
+  .total-row {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .total-chip {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    background: rgba(0,229,255,0.08);
+    border: 1px solid rgba(0,229,255,0.2);
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  .footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">🚀 Roadmap Complet</div>
+  <h1>Devenir Développeur<br>DevOps avec Dyma</h1>
+  <p>Un parcours structuré, de zéro aux compétences avancées, s'appuyant exclusivement sur le catalogue de formations Dyma.fr</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Phases</span></div>
+    <div class="stat"><span class="stat-num">14</span><span class="stat-label">Formations Dyma</span></div>
+    <div class="stat"><span class="stat-num">~18</span><span class="stat-label">Mois estimés</span></div>
+    <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Projets pratiques</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ===== PHASE 1 ===== -->
+  <div class="phase p1">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>01</div>
+      <div class="phase-title-group">
+        <h2>Fondations Système & Linux</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 4 à 6 semaines</span>
+          <span class="badge level">Débutant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Compétences clés</div>
+        <ul>
+          <li>Navigation et gestion du système de fichiers Linux</li>
+          <li>Permissions, utilisateurs, groupes</li>
+          <li>Gestion des processus, services (systemd)</li>
+          <li>Protocoles SSH, SCP, FTP</li>
+          <li>Scripting Bash avancé et automatisation</li>
+          <li>Gestion des paquets via APT et Snap</li>
+          <li>Planification de tâches (cron, anacron)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Pourquoi c'est essentiel</div>
+        <ul>
+          <li>Linux est le système d'exploitation de 90 % des serveurs de production</li>
+          <li>Tous les outils DevOps (Docker, K8s, Ansible…) tournent sur Linux</li>
+          <li>Le shell Bash est le premier outil d'automatisation d'un DevOps</li>
+          <li>SSH est la méthode d'accès principale aux serveurs distants</li>
+          <li>Sans cette base, aucune autre phase n'est accessible</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formation Dyma recommandée</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation Linux & Bash</span>
+          <span class="course-desc">— Terminal, scripts shell, SSH, permissions, cron, APT</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/linux-bash" target="_blank">dyma.fr/formations/linux-bash ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">Ubuntu / Debian</span>
+      <span class="tool-chip">Bash</span>
+      <span class="tool-chip">SSH</span>
+      <span class="tool-chip">cron</span>
+      <span class="tool-chip">systemd</span>
+      <span class="tool-chip">vim / nano</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon — Passer à la Phase 2 quand vous pouvez :</div>
+      <ul>
+        <li>Naviguer et manipuler le système de fichiers Linux sans documentation</li>
+        <li>Écrire un script Bash complet avec boucles, conditions et gestion d'erreurs</li>
+        <li>Se connecter en SSH à un serveur distant et configurer les clés publiques</li>
+        <li>Gérer des services systemd et planifier des tâches cron</li>
+        <li>Administrer les permissions utilisateurs et groupes sur plusieurs fichiers</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 2 ===== -->
+  <div class="phase-divider"></div>
+  <div class="phase p2">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>02</div>
+      <div class="phase-title-group">
+        <h2>Versionning, Réseaux & Serveurs Web</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 4 à 6 semaines</span>
+          <span class="badge level">Débutant → Intermédiaire</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Compétences clés — Git</div>
+        <ul>
+          <li>Commits, branches, merges, rebases</li>
+          <li>Travail collaboratif : pull requests, code review</li>
+          <li>Stratégies de branching (Git Flow, trunk-based)</li>
+          <li>Gestion des conflits et tags de version</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Compétences clés — NGINX</div>
+        <ul>
+          <li>Configuration d'un serveur HTTP/HTTPS</li>
+          <li>Virtual hosts, reverse proxy, load balancing</li>
+          <li>HTTPS avec Let's Encrypt / TLS 1.3</li>
+          <li>Gestion des performances et du cache</li>
+          <li>Monitoring basique avec NGINX Amplify</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formations Dyma recommandées</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation Git</span>
+          <span class="course-desc">— Versionning, branches, collaboration, GitHub</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/web" target="_blank">dyma.fr ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Formation NGINX</span>
+          <span class="course-desc">— Serveur web, reverse proxy, TLS, load balancing, monitoring</span>
+          <a class="dyma-link" href="https://dyma.fr/nginx" target="_blank">dyma.fr/nginx ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">Git</span>
+      <span class="tool-chip">GitHub</span>
+      <span class="tool-chip">NGINX</span>
+      <span class="tool-chip">Let's Encrypt</span>
+      <span class="tool-chip">TLS / SSL</span>
+      <span class="tool-chip">TCP/IP</span>
+      <span class="tool-chip">DNS</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon — Passer à la Phase 3 quand vous pouvez :</div>
+      <ul>
+        <li>Gérer un dépôt Git collaboratif avec branches et pull requests</li>
+        <li>Configurer un serveur NGINX avec HTTPS sur un VPS</li>
+        <li>Mettre en place un reverse proxy pointant vers une application</li>
+        <li>Configurer un load balancer simple avec NGINX</li>
+        <li>Expliquer les bases TCP/IP, DNS, HTTP/2, WebSocket</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 3 ===== -->
+  <div class="phase-divider"></div>
+  <div class="phase p3">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>03</div>
+      <div class="phase-title-group">
+        <h2>Conteneurisation avec Docker</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 4 à 6 semaines</span>
+          <span class="badge level">Intermédiaire</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Compétences clés</div>
+        <ul>
+          <li>Images Docker : écriture de Dockerfile optimisés</li>
+          <li>Gestion des conteneurs, volumes, réseaux</li>
+          <li>Docker Compose pour les architectures multi-services</li>
+          <li>Docker Hub & registres privés</li>
+          <li>Sécurité des images et bonnes pratiques de production</li>
+          <li>Débogage et inspection de conteneurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Pourquoi c'est essentiel</div>
+        <ul>
+          <li>Docker est le prérequis absolu à Kubernetes</li>
+          <li>La conteneurisation est le paradigme dominant du déploiement moderne</li>
+          <li>Tous les pipelines CI/CD utilisent des conteneurs</li>
+          <li>Permet la portabilité et la reproductibilité des environnements</li>
+          <li>Indispensable pour Ansible, GitLab CI, GitHub Actions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formation Dyma recommandée</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation Docker</span>
+          <span class="course-desc">— Images, conteneurs, réseaux, volumes, Compose, déploiement</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/docker" target="_blank">dyma.fr/formations/docker ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">Docker</span>
+      <span class="tool-chip">Docker Compose</span>
+      <span class="tool-chip">Dockerfile</span>
+      <span class="tool-chip">Docker Hub</span>
+      <span class="tool-chip">Container Registry</span>
+      <span class="tool-chip">YAML</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon — Passer à la Phase 4 quand vous pouvez :</div>
+      <ul>
+        <li>Écrire un Dockerfile multi-stage optimisé pour la production</li>
+        <li>Déployer une stack complète (app + base de données + reverse proxy) via Docker Compose</li>
+        <li>Gérer les volumes persistants et les réseaux Docker personnalisés</li>
+        <li>Publier et versionner des images sur un registre privé</li>
+        <li>Déboguer un conteneur défaillant via les logs et exec</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 4 ===== -->
+  <div class="phase-divider"></div>
+  <div class="phase p4">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>04</div>
+      <div class="phase-title-group">
+        <h2>CI/CD & Automatisation des Pipelines</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 5 à 7 semaines</span>
+          <span class="badge level">Intermédiaire → Avancé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>GitHub Actions</div>
+        <ul>
+          <li>Workflows YAML et déclencheurs d'événements</li>
+          <li>Jobs, steps, runners (GitHub-hosted & self-hosted)</li>
+          <li>Gestion des secrets et des variables d'environnement</li>
+          <li>Déploiements multi-environnements (staging, prod)</li>
+          <li>Intégration Docker dans les workflows</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>GitLab CI/CD</div>
+        <ul>
+          <li>Pipelines YAML : stages, jobs, scripts</li>
+          <li>Runners auto-gérés et optimisation</li>
+          <li>Artefacts, cache, gestion des dépendances</li>
+          <li>Intégration Docker et Container Registry</li>
+          <li>Déploiements automatiques sur environnements</li>
+        </ul>
+      </div>
+      <div class="card full">
+        <div class="card-title"><span class="dot dot-accent"></span>Pourquoi maîtriser les deux</div>
+        <ul>
+          <li>GitHub Actions est l'outil CI/CD le plus utilisé dans les startups et open source</li>
+          <li>GitLab CI/CD domine les environnements d'entreprise et on-premise</li>
+          <li>Les concepts sont transférables : maîtriser l'un accélère l'apprentissage de l'autre</li>
+          <li>Automatiser les tests, builds et déploiements est le cœur du métier DevOps</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formations Dyma recommandées</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation GitHub Actions</span>
+          <span class="course-desc">— Workflows CI/CD, runners, Docker, déploiements automatisés</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/github-actions" target="_blank">dyma.fr/formations/github-actions ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Formation GitLab CI/CD</span>
+          <span class="course-desc">— Pipelines, runners, Docker, artefacts, environnements</span>
+          <a class="dyma-link" href="https://dyma.fr/gitlabcicd" target="_blank">dyma.fr/gitlabcicd ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">GitHub Actions</span>
+      <span class="tool-chip">GitLab CI/CD</span>
+      <span class="tool-chip">YAML</span>
+      <span class="tool-chip">Docker in CI</span>
+      <span class="tool-chip">Secrets Management</span>
+      <span class="tool-chip">Runners</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon — Passer à la Phase 5 quand vous pouvez :</div>
+      <ul>
+        <li>Créer un pipeline CI/CD complet (lint → tests → build → push image → déploiement)</li>
+        <li>Configurer des environnements de staging et production séparés</li>
+        <li>Gérer les secrets de manière sécurisée dans les deux plateformes</li>
+        <li>Mettre en place un runner self-hosted et l'optimiser</li>
+        <li>Déclencher des déploiements conditionnels selon la branche ou le tag</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 5 ===== -->
+  <div class="phase-divider"></div>
+  <div class="phase p5">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>05</div>
+      <div class="phase-title-group">
+        <h2>Cloud, IaC & Orchestration Kubernetes</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 8 à 12 semaines</span>
+          <span class="badge level">Avancé</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>AWS (Cloud)</div>
+        <ul>
+          <li>EC2, VPC, IAM, S3, RDS, Lambda</li>
+          <li>CloudFront, Route 53, Load Balancers</li>
+          <li>Sécurité : rôles IAM, groupes de sécurité</li>
+          <li>Architecture serverless et haute disponibilité</li>
+          <li>CloudWatch pour le monitoring basique</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Terraform / OpenTofu (IaC)</div>
+        <ul>
+          <li>Langage HCL : ressources, variables, outputs, modules</li>
+          <li>Gestion du state (remote state sur S3, locking)</li>
+          <li>Multi-environnements (dev/staging/prod) avec workspaces</li>
+          <li>Pipeline CI/CD Terraform avec GitHub Actions</li>
+          <li>Sécurité : Checkov, HashiCorp Vault</li>
+          <li>Préparation certification Terraform Associate</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Ansible (Gestion de config)</div>
+        <ul>
+          <li>Inventaires statiques et dynamiques</li>
+          <li>Playbooks, modules, rôles, handlers</li>
+          <li>Variables, Facts, templates Jinja2</li>
+          <li>Ansible Vault pour les secrets</li>
+          <li>Déploiements sur AWS et DigitalOcean</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Kubernetes (Orchestration)</div>
+        <ul>
+          <li>Architecture : control plane, nodes, etcd, kubelet</li>
+          <li>Objets : Pods, Deployments, Services, ReplicaSets</li>
+          <li>ConfigMaps, Secrets, Volumes persistants</li>
+          <li>Networking : Ingress, NetworkPolicies</li>
+          <li>Autoscaling (HPA) et sondes de santé</li>
+          <li>Déploiement sur GKE (GCP) et AKS (Azure)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formations Dyma recommandées (dans cet ordre)</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation AWS</span>
+          <span class="course-desc">— EC2, S3, IAM, Lambda, VPC, RDS, CloudFront, projets réalistes</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/aws" target="_blank">dyma.fr/formations/aws ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Formation Terraform & OpenTofu</span>
+          <span class="course-desc">— IaC HCL, AWS, multi-env, CI/CD, Checkov, certification Associate</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/terraform-opentofu" target="_blank">dyma.fr/formations/terraform-opentofu ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Formation Ansible</span>
+          <span class="course-desc">— Playbooks, rôles, Jinja2, Vault, AWS, DigitalOcean</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/ansible" target="_blank">dyma.fr/formations/ansible ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Formation Kubernetes</span>
+          <span class="course-desc">— Cluster, Pods, Services, Ingress, autoscaling, GKE, AKS</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/kubernetes" target="_blank">dyma.fr/formations/kubernetes ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">AWS</span>
+      <span class="tool-chip">Terraform</span>
+      <span class="tool-chip">OpenTofu</span>
+      <span class="tool-chip">Ansible</span>
+      <span class="tool-chip">Kubernetes</span>
+      <span class="tool-chip">kubectl</span>
+      <span class="tool-chip">Minikube</span>
+      <span class="tool-chip">Helm</span>
+      <span class="tool-chip">GKE / AKS</span>
+      <span class="tool-chip">HCL</span>
+      <span class="tool-chip">Vault</span>
+      <span class="tool-chip">Checkov</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon — Passer à la Phase 6 quand vous pouvez :</div>
+      <ul>
+        <li>Déployer une infrastructure complète sur AWS via Terraform avec pipeline CI/CD</li>
+        <li>Configurer automatiquement des serveurs avec des playbooks Ansible idempotents</li>
+        <li>Déployer une application multi-conteneurs sur un cluster Kubernetes avec autoscaling</li>
+        <li>Gérer les secrets en production (Vault ou AWS Secrets Manager)</li>
+        <li>Provisionner un cluster Kubernetes managé (GKE ou AKS) depuis du code Terraform</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 6 ===== -->
+  <div class="phase-divider"></div>
+  <div class="phase p6">
+    <div class="phase-header">
+      <div class="phase-num">PHASE<br>06</div>
+      <div class="phase-title-group">
+        <h2>Monitoring, Sécurité & Spécialisation</h2>
+        <div class="phase-meta">
+          <span class="badge time">⏱ 4 à 6 semaines</span>
+          <span class="badge level">Expert</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Monitoring & Observabilité</div>
+        <ul>
+          <li>Prometheus : collecte de métriques, alertes</li>
+          <li>Grafana : dashboards et visualisation</li>
+          <li>ELK Stack ou Loki pour la centralisation des logs</li>
+          <li>Tracing distribué (OpenTelemetry)</li>
+          <li>SLO, SLI, SLA — culture SRE</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Sécurité DevSecOps</div>
+        <ul>
+          <li>Scan de vulnérabilités dans les pipelines CI/CD</li>
+          <li>Gestion des secrets (Vault, AWS Secrets Manager)</li>
+          <li>Durcissement des images Docker (rootless, non-root)</li>
+          <li>Network policies Kubernetes</li>
+          <li>RBAC et IAM avancé</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Cloud avancé (optionnel)</div>
+        <ul>
+          <li>Formation Azure sur Dyma pour le multi-cloud</li>
+          <li>Service mesh (Istio, Linkerd)</li>
+          <li>ArgoCD pour le GitOps</li>
+          <li>Helm charts pour le packaging Kubernetes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot dot-accent"></span>Projet de synthèse</div>
+        <ul>
+          <li>Infrastructure complète sur AWS via Terraform</li>
+          <li>Cluster Kubernetes déployé en IaC</li>
+          <li>Pipeline CI/CD end-to-end (GitHub Actions)</li>
+          <li>Monitoring Prometheus + Grafana</li>
+          <li>Tout versionné sur GitHub, tout documenté</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-box">
+      <div class="course-box-title">📚 Formations Dyma complémentaires</div>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Formation Azure</span>
+          <span class="course-desc">— Cloud Microsoft, services managés, architecture scalable</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/devops-clouds" target="_blank">dyma.fr/formations/devops-clouds ↗</a>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Cybersécurité</span>
+          <span class="course-desc">— Vulnérabilités, durcissement systèmes, DevSecOps</span>
+          <a class="dyma-link" href="https://dyma.fr/formations/devops-clouds" target="_blank">dyma.fr/formations/devops-clouds ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">Prometheus</span>
+      <span class="tool-chip">Grafana</span>
+      <span class="tool-chip">ELK / Loki</span>
+      <span class="tool-chip">ArgoCD</span>
+      <span class="tool-chip">Helm</span>
+      <span class="tool-chip">Istio</span>
+      <span class="tool-chip">Azure</span>
+      <span class="tool-chip">Trivy</span>
+      <span class="tool-chip">OWASP</span>
+    </div>
+
+    <div class="milestone">
+      <div class="milestone-title">🏁 Jalon final — Profil DevOps Junior/Confirmé :</div>
+      <ul>
+        <li>Vous avez un projet GitHub public avec infrastructure complète en IaC</li>
+        <li>Vous pouvez décrire et démontrer un pipeline CI/CD end-to-end en entretien</li>
+        <li>Vous avez des dashboards Grafana opérationnels sur votre cluster Kubernetes</li>
+        <li>Vous êtes capable de diagnostiquer une panne en production via les logs et métriques</li>
+        <li>Vous maîtrisez au moins un cloud provider (AWS recommandé) et deux outils IaC</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Récap -->
+  <div class="recap">
+    <h2>📅 Récapitulatif du parcours</h2>
+    <div class="timeline-row tr1">
+      <div class="tl-phase">PHASE 01</div>
+      <div class="tl-name">Linux & Bash — Fondations système</div>
+      <div class="tl-time">4 – 6 sem.</div>
+    </div>
+    <div class="timeline-row tr2">
+      <div class="tl-phase">PHASE 02</div>
+      <div class="tl-name">Git, Réseaux & NGINX</div>
+      <div class="tl-time">4 – 6 sem.</div>
+    </div>
+    <div class="timeline-row tr3">
+      <div class="tl-phase">PHASE 03</div>
+      <div class="tl-name">Conteneurisation avec Docker</div>
+      <div class="tl-time">4 – 6 sem.</div>
+    </div>
+    <div class="timeline-row tr4">
+      <div class="tl-phase">PHASE 04</div>
+      <div class="tl-name">CI/CD — GitHub Actions & GitLab</div>
+      <div class="tl-time">5 – 7 sem.</div>
+    </div>
+    <div class="timeline-row tr5">
+      <div class="tl-phase">PHASE 05</div>
+      <div class="tl-name">Cloud (AWS) + IaC (Terraform) + Ansible + Kubernetes</div>
+      <div class="tl-time">8 – 12 sem.</div>
+    </div>
+    <div class="timeline-row tr6">
+      <div class="tl-phase">PHASE 06</div>
+      <div class="tl-name">Monitoring, Sécurité & Spécialisation</div>
+      <div class="tl-time">4 – 6 sem.</div>
+    </div>
+    <div class="total-row">
+      <span class="total-chip">⏱ TOTAL ESTIMÉ : 14 à 18 mois (à temps partiel, ~10h/semaine)</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Roadmap basé sur le catalogue <a href="https://dyma.fr/formations/devops-clouds" target="_blank">Dyma.fr — DevOps & Cloud</a> · Mis à jour mars 2026</p>
+</div>
+
+</body>
+</html>
